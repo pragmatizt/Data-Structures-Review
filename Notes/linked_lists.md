@@ -69,7 +69,9 @@ But for last?  If linked list has 3 million nodes, we would have to traverse 3m 
 So deleting at end would be inefficient.
 
 
-|## ARRAYS    	                    | LINKED LISTS  	                |
+### Arrays vs. Linked Lists 
+===
+| **ARRAYS**    	                | **LINKED LISTS**                  |
 |---	                            |---	                            |
 |[N] fast insertion and deletion   	|[Y] fast insertion and deletion   	|
 |[Y] fast search	   	            |[N] fast search    	            |
