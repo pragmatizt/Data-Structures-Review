@@ -68,9 +68,10 @@ Same concept as insertion.  Deleting at beginning won't be a problem.
 But for last?  If linked list has 3 million nodes, we would have to traverse 3m nodes.
 So deleting at end would be inefficient.
 
+
 =========================================
-## ARRAYS 				||		LINKED LISTS
-=============================================================
+## ARRAYS 				            ||		LINKED LISTS
+-----------------------------------:||:-------------------------------------:
 [N] fast insertion and deletion     || [Y] fast insertion and deletion  <br>
 [Y] fast search			            || [N] fast search                  <br>
 [N] easy to grow or shrink	        || [Y] easy to grow or shrink       <br>
@@ -80,6 +81,7 @@ of memory			                || of memory                        <br>
 [Y] Easy binary search		        || [N] Easy binary search           <br>
 
 *When are arrays helpful?*	             *When are linked lists helpful?*   <br>
+"""
 
 If you ever find yourself having to do a lot of iteration or searching through dataset.
 Or need to quickly find a random value. A linked list could be your worst enemy.
