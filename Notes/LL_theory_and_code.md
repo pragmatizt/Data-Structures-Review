@@ -95,47 +95,63 @@ while i<k and p is not None:
 
 This is how you would add a new node:
 Create a new node called `temp`. 
-`temp.link = self.start`
-`self.start = temp`
+~~~~
+temp.link = self.start
+self.start = temp
+~~~~
 
 *The above code is the correct node, because if you did it in reverse then the node would just continuously link to itself*
 
 **Insertion in an empty list**
-`self.start = temp`
+~~~~
+self.start = temp
+~~~~
 
 **Insertion at the end**
-`p = self.start`
-`while p.link is not None:`
-    `p = p.link`
-`p.link = temp`
+~~~~
+p = self.start
+while p.link is not None:
+    p = p.link
+p.link = temp
+~~~~
 
 **Insertion in between the nodes**
-`temp.link = p.link`
-`p.link = temp`
+~~~~
+temp.link = p.link
+p.link = temp
+~~~~
 
 *remember, order matters*
 
 **Insertion after a node**
-`p = self.start`
-`while p is not None:`
-`  if p.info == x:`
-`    break`
-`  p = p.link`
+~~~~
+p = self.start
+while p is not None:
+  if p.info == x:
+    break
+  p = p.link
+~~~~
 
 Insert a new node by writing these two insertions:
-`temp.link = p.link`
-`p.link = temp`
+~~~~
+temp.link = p.link
+p.link = temp
+~~~~
 
 **Insertion before a node**
-`p = self.start`
-`while p.link is not None:`
-`  if p.link.info == x:` # what is info in this case?
-`    break`
-`  p = p.link`
+~~~~
+p = self.start
+while p.link is not None:
+  if p.link.info == x: # what is info in this case?
+    break
+  p = p.link
+~~~~
 
 *and then, just to keep drilling the idea in, this is how we would insert that new node:*
-`temp.link = p.link`
-`p.link = temp`
+~~~~
+temp.link = p.link
+p.link = temp
+~~~~
 
 **Insertion at a given position**
 Suppose:
@@ -145,18 +161,20 @@ k = insert a new node at kth position in the list
 So it means we'll be inserting a node between index 3 and index 4.  For that, we'd need a reference to the 3rd node for starters.
 
 We would need to reference a k - 1 of the list.
-
-`p = self.start`
-`i = 1`
-`while i<k-1 and p is not None:`
-  `p = p.link`
-  `i+=1`
+~~~~
+p = self.start
+i = 1
+while i<k-1 and p is not None:
+  p = p.link
+  i+=1
+~~~~
 
 After finding that location, we create a temp node.
 And again, doing this for repetitions:
-`temp.link = p.link`
-`p.link = temp`
-
+~~~~
+temp.link = p.link
+p.link = temp
+~~~~
 
 ## Deletion in a Single Linked List
 - Deletion of first node
@@ -166,16 +184,22 @@ And again, doing this for repetitions:
 
 **Deletion fo the first node**
 After deletion, the second node will become the first node of the list.
-
-`self.start = self.start.link`
+~~~~
+self.start = self.start.link
+~~~~
 
 **Deletion of the only node**
-`self.start = None`
+~~~~
+self.start = None
+~~~~
 
 **Deletion in between the list nodes**
 We'll need a reference for this one.
-
-`p.link = p.link.link`  
+~~~~
+p.link = p.link.link  
+~~~~
 
 **Deletion at the end of the list**
-`p.link = None`
+~~~~
+p.link = None
+~~~~
