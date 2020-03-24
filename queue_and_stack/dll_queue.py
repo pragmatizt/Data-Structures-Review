@@ -34,4 +34,9 @@ of elements in advance. Also, generally, the allocated memory is equal to the up
 
 (2) Inserting a new element in an array of elements is expensive because a room has
  to be created for the new elements and to create room existing elements have to be shifted.
+
+
+ALSO, from lecture -- 
+because the only elements you need to access are the front and end, so an array is 
+unnecessarily complicated
 """
