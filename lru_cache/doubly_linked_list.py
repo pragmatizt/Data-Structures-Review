@@ -1,3 +1,6 @@
+# Ira's note: Why do we include the same thing twice (from yesterday's dir)?
+# is it just because the .py file needs to be in its respective folder it's being imported in?
+
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
@@ -49,25 +52,82 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-        pass
+        new_node = ListNode(value)
+        self.length += 1
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
     def remove_from_head(self):
-        pass
+        value = self.head.value
+        self.delete(self.head)
+        return value
 
     def add_to_tail(self, value):
-        pass
+        new_node = ListNode(value)
+        self.length += 1
+        if not self.head and not self.tail:
+            self.head = new_node
+            self.tail = new_node
+        else:                   
+            new_node.prev = self.tail   # Would love to understand what's happening here.
+            self.tail.next = new_node   # go over during AH
+            self.tail = new_node        # go over during AH
 
     def remove_from_tail(self):
-        pass
+        value = self.tail.value
+        self.delete(self.tail)
+        return value
 
-    def move_to_front(self, node):
-        pass
+    def move_to_front(self, node):      # Ask to go over during AH
+        if node is self.head:
+            return
+        value = node.value
+        self.delete(node)
+        self.add_to_head(value)
 
     def move_to_end(self, node):
-        pass
+        if node is self.tail:
+            return
+        value = node.value
+        self.delete(node)
+        self.add_to_tail(value)
 
     def delete(self, node):
-        pass
+        # TODO: Catch errors if list is empty or node is not in list
+        # For now assumine node is in list
+        self.length -= 1
+        # if head and tail
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+        # if head
+        elif node is self.head:
+            self.head = self.head.next
+            node.delete()
+
+        # if tail
+        elif node is self.tail:
+            self.tail = self.tail.prev
+            node.delete()
+        else:
+            # if regular node
+            node.delete()
 
     def get_max(self):
-        pass
+        # Loop through all nodes, looking for biggest value
+        # TODO: Error checking
+        if not self.head:
+            return None
+        max_value = self.head.value
+        current = self.head
+        while curent:
+            if current.value > max_value:
+                max_value = current.value
+            current = current.next
+
+        return max_value
