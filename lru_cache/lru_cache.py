@@ -11,14 +11,14 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        # Link to the list (inspired by Assignment 1)
+        # Link to the list 
         self.order = DoublyLinkedList()
         # We have a limit above
         self.limit = limit
         # Counter
         self.size = 0
         # Create a dictionary 
-        self.storage_dict = {}    # why self.storage_dict = {} vs. self.storage_dict = dict()
+        self.storage_dict = {}  
 
     """
     Retrieves the value associated with the given key. Also
@@ -29,15 +29,24 @@ class LRUCache:
     """
     def get(self, key):
         # Returns the value associated with the key or none
+        ## A check is done to see if the key is in the storage dictionary
         if key in self.storage_dict:
-            node = self.storage_dict[key] # If key is there, we want the given key to point to that node
+            # Identify the value of the node based on the key from the dictionary
+            
+            node = self.storage_dict[key]
+            
+            # Move the node to the end of the linked list
             self.order.move_to_end(node)
-            print(node)
-            print(node.value)   # we never defined value, do we need to?
-            print(node.value[1])
-            print(node.value[0])
-            return node.value[1]   # the [1] is the value; of the location of the pointer of the node
+
+            # print(node)
+            # print(node.value)   
+            # print(node.value[1])
+            # print(node.value[0])
+
+            # returns the node's value (which is same as key)
+            return node.value[1]  
         else:
+            # none if the key-value pair doesn't exist
             return None
 
     """
@@ -52,17 +61,38 @@ class LRUCache:
     """
     def set(self, key, value):
         # Storing
+        ## A check is done to see if the key is in the storage dictionary
         if key in self.storage_dict:
+            # Identify the value of the node based on the key from the dictionary
             node = self.storage_dict[key]
+
+            # Set the node value to the key value pair
             node.value = (key, value)
+            
+            # Move the node to the end of the linked list
             return self.order.move_to_end(node)
 
+        # If cache is at max capacity before entry is added
         if len (self.order) == self.limit:
+            # Remove oldest entry to make room
             del self.storage_dict[self.order.head.value[0]]
+            # After, we remove from tail.  (Not sure I understand -- we're deleting the old from head, what do we remove from tail?)
             self.order.remove_from_tail()
 
+        # We remove from tail (line 73), because we're adding a new tail -- is that correct?
         self.order.add_to_tail((key, value))
+        # My confusion here stems from [key].  What specifically is that saying? 
         self.storage_dict[key] = self.order.tail
+
+
+
+
+
+
+
+
+
+
 
 
 
