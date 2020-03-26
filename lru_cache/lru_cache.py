@@ -74,14 +74,14 @@ class LRUCache:
 
         # If cache is at max capacity before entry is added
         if len (self.order) == self.limit:
-            # Remove oldest entry to make room
+            # Remove oldest entry in STORAGE to make room
             del self.storage_dict[self.order.head.value[0]]
-            # After, we remove from tail.  (Not sure I understand -- we're deleting the old from head, what do we remove from tail?)
+            # After, we remove from tail on LINKED LIST
             self.order.remove_from_tail()
 
-        # We remove from tail (line 73), because we're adding a new tail -- is that correct?
+        # add to tail newest Value on LINKED LIST
         self.order.add_to_tail((key, value))
-        # My confusion here stems from [key].  What specifically is that saying? 
+        # Make the STORAGE match with the LINKED LIST order
         self.storage_dict[key] = self.order.tail
 
 
